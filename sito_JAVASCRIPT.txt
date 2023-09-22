@@ -1,0 +1,18 @@
+JAVASCRIPT
+
+MENU (a sinistra)
+- variabili
+- tipi di dato
+- funzioni
+- eventi
+
+CONTENUTO (a destraa)
+- titolo
+- descrizione
+- esempio:
+FATTO CON I TAG
+<pre>
+  <code>
+	// code...
+  </code>
+<pre>

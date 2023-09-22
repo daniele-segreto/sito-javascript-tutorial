@@ -1,0 +1,58 @@
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+li a {
+    text-decoration: none;
+    color: rgb(77, 77, 77);
+}
+
+li a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+li {
+    list-style-type: none;
+}
+
+.voce_principale {
+    list-style-type: none;
+}
+
+.sotto-menu {
+    display: none;
+}
+
+.freccia {
+    cursor: pointer;
+}
+
+#menu a.active {
+    color: black;
+    font-weight: bold;
+}
+
+.row {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-color: #f8da59;
+}
+
+.bg-yellow {
+    background-color: #f8da59;
+    color: black;
+}
+
+.freccia {
+    cursor: pointer;
+}
+
+button {
+    background-color: #f8da59 !important;
+}
+
+button:hover {
+    background-color: black !important;
+    color: #f8da59 !important;
+}
