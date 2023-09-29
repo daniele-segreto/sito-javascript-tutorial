@@ -5,8 +5,9 @@ MENU (a sinistra)
 - tipi di dato
 - funzioni
 - eventi
+- array
 
-CONTENUTO (a destraa)
+CONTENUTO (a destra)
 - titolo
 - descrizione
 - esempio:
@@ -16,3 +17,21 @@ FATTO CON I TAG
 	// code...
   </code>
 <pre>
+
+
+// bug risolti
+- il toogle del menù a tendina deve avvenire sul div della voce selezionata, non sul div della freccetta o sul div generico: OK
+- l'active avviene al cambio della voce del menù, ma non al click dei tasti 'indietro' e 'avanti': OK
+- la pagina corrente dei tasti 'indietro' e 'avanti' non corrisponde all'elemento del menù selezionato dall'utente: OK
+- sistemare il redirect alla pagina home (con href invece del redirect() all'onclick): OK
+- disabilitare i tasti 'indietro' e 'avanti': OK
+- disabilitare il tasto 'indietro' al caricamento della pagina: OK
+- sistemare lo scorrimento delle voci del menù dopo aver aperto uno dei menù a tendina (block/none): OK
+
+// impelemtazioni e miglioramenti
+- implementare tutta la parte relativa alla voce 'qualità del codice: OK
+- commentare il codice: OK
+- sostituire cdn con bootstrap.css: OK
+- migliorare il menù responsive
+- sistemare meglio il contenuto
+- etc.

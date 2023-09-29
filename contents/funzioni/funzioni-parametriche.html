@@ -1,6 +1,8 @@
 <h1>Funzioni parametriche</h1>
 
-<p>Descrizione: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem, accusantium natus? Porro ab voluptatem hic quam molestiae. Cum id neque architecto molestiae? Harum tempore iste dolores, recusandae voluptates debitis doloribus autem dolorem iusto eaque quisquam quos architecto quae, placeat quas atque saepe sed, et itaque. Deleniti ipsum rerum unde alias.</p>
+<h3>Argomenti o parametri di una funzione</h3>
+
+<p>La funzione somma() che abbiamo definito prima è in grado di sommare soltanto i due numeri fissati nel blocco di istruzioni. Per renderla più generale è opportuno introdurre due argomenti che rappresenteranno i numeri da sommare:</p>
 
 <p>
     <b>Esempio:</b>
@@ -8,15 +10,46 @@
 
 <pre class="bg-dark text-light">
     <code>
-        // code...
+        function somma(x, y) {
+            var z = x + y;
+            return z;
+        }
+    </code>
+</pre>
+
+<p>In questo caso i valori da sommare verranno passati alla funzione somma() al momento dell'invocazione:</p>
+
+<pre class="bg-dark text-light">
+    <code>
+        var risultato = somma(11, 5);
     </code>
 </pre>
 
 <hr>
 
-<!-- Sistemare -->
+<h3>Parametri opzionali</h3>
+
+<p>Come abbiamo avuto modo di vedere, JavaScript è un linguaggio molto flessibile e questa sua flessibilità ci consente di fare delle cose che talvolta possono apparire abbastanza strane. Ad esempio, a proposito degli argomenti di una funzione, non è obbligatorio passarli tutti in una chiamata di funzione.</p>
+
+<p>In altre parole, data la definizione della funzione somma() con i due argomenti da sommare, possiamo invocare la funzione nei seguenti modi:</p>
+
+<pre class="bg-dark text-light">
+    <code>
+        var risultato1 = somma(11);
+        var risultato2 = somma();
+        var risultato3 = somma(11, 5, 7, 9);
+    </code>
+</pre>
+
+<p>Queste tre invocazioni della funzione somma() potrebbero apparire errate, ma non generano nessun errore in JavaScript. In particolare, nel primo caso specifichiamo un solo argomento, il che assegna automaticamente al secondo argomento mancante il valore undefined restituendo come somma il valore NaN. Lo stesso ragionamento vale per il secondo caso, dove non passiamo alcun argomento.</p>
+
+<p>Nel terzo caso, invece, passiamo più argomenti di quelli previsti nella definizione della funzione. JavaScript ignorerà gli argomenti in più restituendo lo stesso risultato di somma(11, 5).</p>
+
+<hr>
+
 <div class="mt-3">
     <p>
-        Torna alla <a class="escluso" href="http://127.0.0.1:5501/4.sito-javascript-tutorial/index.html">Home</a>.
+        <!-- Torna alla <a class="escluso" onclick="redirect()">Home</a>. -->
+        Torna alla <a class="escluso" href="index.html">Home</a>
     </p>
 </div>

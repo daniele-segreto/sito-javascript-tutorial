@@ -56,3 +56,23 @@ button:hover {
     background-color: black !important;
     color: #f8da59 !important;
 }
+
+h1 {
+    margin-bottom: 30px;
+}
+
+/* ----------------------------------------- */
+/* (da sistemare/continuare) */
+
+/* .menu-small {
+    margin-top: 17px;
+}
+
+.menu-small a {
+    font-size: 9px;
+    color: aliceblue !important;
+}
+
+@media (max-width: 768px) {
+
+} */

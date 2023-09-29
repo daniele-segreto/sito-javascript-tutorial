@@ -1,0 +1,67 @@
+<h1>Gestire gli array</h1>
+
+<div>
+    <h4>Notazione letterale degli array</h4>
+    <p>Gli array possono essere creati utilizzando il valore letterale notazione:</p>
+</div>
+
+<pre class="bg-dark text-light">
+    <code>
+        const fruits = ["Apple", "Banana"];
+
+        console.log(fruits.length); // 2
+        console.log(fruits[0]); // "Apple"
+    </code>
+</pre>
+
+<hr>
+
+<div>
+    <h4>Costruttore di Array con un singolo parametro</h4>
+    <p>Gli array possono essere creati utilizzando un costruttore con un singolo parametro numerico. Viene creato un array con suo lengthproprietà impostata su quel numero e gli elementi dell'array sono vuoti slot. </p>
+</div>
+
+<pre class="bg-dark text-light">
+    <code>
+        const arrayEmpty = new Array(2);
+
+        console.log(arrayEmpty.length); // 2
+        console.log(arrayEmpty[0]); // undefined; actually, it is an empty slot
+        console.log(0 in arrayEmpty); // false
+        console.log(1 in arrayEmpty); // false
+    </code>
+</pre>
+
+<pre class="bg-dark text-light">
+    <code>
+        const arrayOfOne = new Array("2"); // Not the number 2 but the string "2"
+
+        console.log(arrayOfOne.length); // 1
+        console.log(arrayOfOne[0]); // "2"        
+    </code>
+</pre>
+
+<hr>
+
+<div>
+    <h4>Costruttore di array con più parametri</h4>
+    <p>Se al costruttore viene passato più di un argomento, un nuovo Arraycon vengono creati gli elementi specificati. </p>
+</div>
+
+<pre class="bg-dark text-light">
+    <code>
+        const fruits = new Array("Apple", "Banana");
+
+        console.log(fruits.length); // 2
+        console.log(fruits[0]); // "Apple"        
+    </code>
+</pre>
+
+<hr>
+
+<div class="mt-3">
+    <p>
+        <!-- Torna alla <a class="escluso" onclick="redirect()">Home</a>. -->
+        Torna alla <a class="escluso" href="index.html">Home</a>
+    </p>
+</div>

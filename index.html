@@ -1,35 +1,53 @@
 <!DOCTYPE html>
 <html lang="it">
 
+<!-- HEAD -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="index.html">
     <title>JavaScript Tutorial</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
+<!-- BODY -->
 <body class="bg-dark">
     <div class="container">
         <div class="row border border-5 p-3">
             
-            <div class="d-flex justify-content-lg-end">
+            <!-- TASTI INDIETRO E AVANTI -->
+            <div class="d-flex justify-content-lg-end tasti">
                 <button class="btn border border-3 border-dark shadow-lg m-1" id="btnPrecedente"><b>INDIETRO</b></button>
                 <button class="btn border border-3 border-dark shadow-lg m-1" id="btnSuccessivo"><b>AVANTI</b></button>
             </div>
-            
+
+            <!-- COLONNA DI SINISTRA -->
             <div class="col-lg-3 bg-dark p-4 text-light">
-                
-                <!-- <h4 class="mb-4">MEN&Ugrave;</h4> -->
-                
+
+                <!-- MENU' SMALL (da sistemare/continuare) -->
+                <!-- <nav>
+                    <ul class="d-flex flex-row menu-small">
+                        <li><a href="" class="li-a ms-0 me-2"><b>BASI DI JAVASCRIPT</b></a></li>
+                        <li><a href="" class="li-a me-2"><b>COSTRUTTI</b></a></li>
+                        <li><a href="" class="li-a me-2"><b>FUNZIONI</b></a></li>
+                        <li><a href="" class="li-a me-2"><b>ARRAY</b></a></li>
+                        <li><a href="" class="li-a me-2"><b>QUALIT&Aacute; DEL CODICE</b></a></li>
+                    </ul>
+                </nav> -->
+
+                <!-- MENU' -->
                 <nav id="menu">
+                    <!-- VOCE 1: LE BASI DI JS -->
                     <div class="voce_principale border border-4 text-dark bg-yellow mt-1" data-index="1">
-                        <div class="p-3">
-                            <span class="freccia me-2" data-target="sotto-menu-1">▼</span>
+                        <div class="p-3 freccia-toogle" data-target="sotto-menu-1">
+                            <span class="freccia me-2">▼</span>
                             <b>LE BASI DI JS</b>
                         </div>
                         <ul class="sotto-menu bg-light mb-1" id="sotto-menu-1">
-                            <div class="p-3">
+                            <div class="p-3 div-in-sotto-menu">
                                 <li><a href="contents/basi-js/struttura-codice.html" class="li-a" data-page-id="1">Struttura del codice</a></li>
                                 <li><a href="contents/basi-js/variabili.html" class="li-a" data-page-id="2">Variabili</a></li>
                                 <li><a href="contents/basi-js/tipi-dato.html" class="li-a" data-page-id="3">Tipi di dato</a></li>
@@ -37,9 +55,10 @@
                             </div>
                         </ul>
                     </div>
+                    <!-- VOCE 2: COSTRUTTI -->
                     <div class="voce_principale border border-4 text-dark bg-yellow mt-4" data-index="2">
-                        <div class="p-3">
-                            <span class="freccia me-2" data-target="sotto-menu-2">▼</span>
+                        <div class="p-3 freccia-toogle" data-target="sotto-menu-2">
+                            <span class="freccia me-2">▼</span>
                             <b>COSTRUTTI</b>
                         </div>
                         <ul class="sotto-menu bg-light mb-1" id="sotto-menu-2">
@@ -52,9 +71,10 @@
                             </div>
                         </ul>
                     </div>
+                    <!-- VOCE 3: FUNZIONI -->
                     <div class="voce_principale border border-4 text-dark bg-yellow mt-4" data-index="3">
-                        <div class="p-3">
-                            <span class="freccia me-2 mb-1" data-target="sotto-menu-3">▼</span>
+                        <div class="p-3 freccia-toogle" data-target="sotto-menu-3">
+                            <span class="freccia me-2 mb-1">▼</span>
                             <b>FUNZIONI</b>
                         </div>
                         <ul class="sotto-menu bg-light mb-1" id="sotto-menu-3">
@@ -64,32 +84,63 @@
                             </div>
                         </ul>
                     </div>
+                    <!-- VOCE 4: ARRAY -->
+                    <div class="voce_principale border border-4 text-dark bg-yellow mt-4" data-index="4">
+                        <div class="p-3 freccia-toogle" data-target="sotto-menu-4">
+                            <span class="freccia me-2 mb-1">▼</span>
+                            <b>ARRAY</b>
+                        </div>
+                        <ul class="sotto-menu bg-light mb-1" id="sotto-menu-4">
+                            <div class="p-3">
+                                <li><a href="contents/array/introduzione-array.html" class="li-a" data-page-id="12">Introduzione agli Array</a></li>
+                                <li><a href="contents/array/gestire-array.html" class="li-a" data-page-id="13">Gestire gli Array</a></li>
+                                <li><a href="contents/array/manipolazione-array.html" class="li-a" data-page-id="14">Metodi di manipolazione degli array</a></li>
+                            </div>
+                        </ul>
+                    </div>
+                    <!-- VOCE 5: QUALITA' DEL CODICE -->
+                    <div class="voce_principale border border-4 text-dark bg-yellow mt-4" data-index="5">
+                        <div class="p-3 freccia-toogle" data-target="sotto-menu-5">
+                            <span class="freccia me-2 mb-1">▼</span>
+                            <b>QUALIT&Aacute; DEL CODICE</b>
+                        </div>
+                        <ul class="sotto-menu bg-light mb-1" id="sotto-menu-5">
+                            <div class="p-3">
+                                <li><a href="contents/qualita-codice/debug.html" class="li-a" data-page-id="15">Console e Debug</a></li>
+                                <li><a href="contents/qualita-codice/stile-programmazione.html" class="li-a" data-page-id="16">Stile di programmazione</a></li>
+                                <li><a href="contents/qualita-codice/commenti.html" class="li-a" data-page-id="17">Commenti</a></li>
+                                <li><a href="contents/qualita-codice/astrazione-operazioni.html" class="li-a" data-page-id="18">Astrazione delle operazioni</a></li>
+                                <li><a href="contents/qualita-codice/progettazione.html" class="li-a" data-page-id="19">Progettazione</a></li>
+                            </div>
+                        </ul>
+                    </div>
                 </nav>
-                
+
             </div>
-            
+
+            <!-- COLONNA DI DESTRA -->
             <div class="col-lg-9 p-5 bg-light" id="contenuto">
                 
                 <h1 class="mb-4">JAVASCRIPT</h1>
                 <img src="img/banner-js.png" class="img-fluid mb-4" alt="javascript">
                 <p>
                     JavaScript è stato ideato nel 1995 da Netscape e rilasciato con la versione 2.0 del suo browser, Netscape Navigator, dapprima con il nome LiveScript e subito dopo con l'attuale nome, creando all'inizio non poca confusione con Java che proprio in quell'anno debuttava con grande attenzione da parte del mondo del software.</p>
-                <p>
-                    Da subito JavaScript aggiunse alle pagine HTML la possibilità di essere modificate in modo dinamico, in base all'interazione dell'utente con il browser (lato client). Questo grazie alle funzionalità di calcolo e di manipolazione dei documenti che era possibile effettuare anche senza coinvolgere il server. Questa caratteristica è stata sottolineata durante gli anni '90 con il nome che veniva dato all'accoppiata HTML-JavaScript: Dynamic HTML (DHTML).
-                </p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quos nobis laborum? Aut nemo delectus vel laboriosam dolorem nesciunt, vitae sed nisi molestiae, accusamus magni inventore saepe, iste rem asperiores voluptatum maxime. Amet facere hic aspernatur corrupti, voluptate, delectus nulla, nam similique recusandae repellat ducimus ipsa! Facilis accusamus saepe architecto!</p>
-                <p>
-                    Nel 1997, sulla base del linguaggio di Netscape, nacque lo standard ECMA-262 definito dall'organismo di standardizzazione industriale ECMA International che rappresentava le specifiche del linguaggio ECMAScript. Il linguaggio definito dall'ECMA, nelle versioni che si sono susseguite, è il punto di riferimento non solo per JavaScript, ma anche per altri linguaggi come ad esempio ActionScript, WMLScript e QtScript.
-                </p>
-                <p>
-                    L'esigenza di rendere il Web sempre più interattivo e dinamico favorì la nascita di tecnologie concorrenti: Flash, ActiveX e gli Applet Java. Queste tecnologie fornivano la possibilità di realizzare funzionalità ed effetti grafici di maggior impatto rispetto a quanto possibile con JavaScript, ma richiedevano specifici runtime o, come i controlli ActiveX, giravano solo su uno specifico browser.
-                </p>
+                    <p>
+                        Da subito JavaScript aggiunse alle pagine HTML la possibilità di essere modificate in modo dinamico, in base all'interazione dell'utente con il browser (lato client). Questo grazie alle funzionalità di calcolo e di manipolazione dei documenti che era possibile effettuare anche senza coinvolgere il server. Questa caratteristica è stata sottolineata durante gli anni '90 con il nome che veniva dato all'accoppiata HTML-JavaScript: Dynamic HTML (DHTML).
+                    </p>
+                    <p>
+                        Nel 1997, sulla base del linguaggio di Netscape, nacque lo standard ECMA-262 definito dall'organismo di standardizzazione industriale ECMA International che rappresentava le specifiche del linguaggio ECMAScript. Il linguaggio definito dall'ECMA, nelle versioni che si sono susseguite, è il punto di riferimento non solo per JavaScript, ma anche per altri linguaggi come ad esempio ActionScript, WMLScript e QtScript.
+                    </p>
+                    <p>
+                        L'esigenza di rendere il Web sempre più interattivo e dinamico favorì la nascita di tecnologie concorrenti: Flash, ActiveX e gli Applet Java. Queste tecnologie fornivano la possibilità di realizzare funzionalità ed effetti grafici di maggior impatto rispetto a quanto possibile con JavaScript, ma richiedevano specifici runtime o, come i controlli ActiveX, giravano solo su uno specifico browser.
+                    </p>
+                </div>
             </div>
-            
-        </div>
-    </div>
-    
-    <script src="js/script.js"></script>
-</body>
 
-</html>
+        </div>
+
+        <!-- JS -->
+        <script src="js/script.js"></script>
+    </body>
+    
+    </html>

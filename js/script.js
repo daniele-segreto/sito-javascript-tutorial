@@ -1,36 +1,42 @@
-// Attendi il caricamento del documento
 document.addEventListener('DOMContentLoaded', function() {
-    
-    // CLASSE ACTIVE:
-    
-    // Seleziona tutti i tag <a> che si trovano dentro al menù
+
+
+    // Setto il tasto 'indietro' come 'disabilitato' al caricamento della pagina
+    document.getElementById('btnPrecedente').disabled = true;
+
+
+    // -------------------------------------------------------------------------------------
+    // ******* GESTIONE DELLA CLASSE ACTIVE *******
+
+    // Seleziona tutti gli elementi del menu
     const menuItems = document.querySelectorAll('#menu a');
-    
-    // Cicla tutti gli elementi selezionato
+
+    // Aggiungi un listener di evento a ciascun elemento del menu
     menuItems.forEach(function(item) {
-        // Al Click fai scattare un evento
         item.addEventListener('click', function(e) {
-            // Cicla tutti gli elementi del menu
+            // Rimuovi la classe 'active' da tutti gli elementi del menu
             menuItems.forEach(function(item) {
-                // Rimuovi la classe 'active' da tutti gli elementi del menu
                 item.classList.remove('active');
             });
-            
-            // Aggiungi la classe 'active' all'elemento selezionato (this)
+
+            // Aggiungi la classe 'active' all'elemento cliccato (this)
             this.classList.add('active');
+            
+            // Abilita il tasto "Indietro"
+            document.getElementById('btnPrecedente').disabled = false;
         });
+
     });
-    
-    // -------------------------------------------------------------------
-    
-    // TOOGLE DEL MENU':
-    
-    // Seleziona tutti gli elementi con classe 'freccia'
-    var freccia = document.querySelectorAll('.freccia');
-    
-    // Cicla tutti gli elementi con la classe freccia
-    freccia.forEach(freccia => {
-        // Fai scattare un evento al click
+
+
+    // -------------------------------------------------------------------------------------
+    // ******* GESTIONE DEL TOGGLE *******
+
+    // Seleziona tutti gli elementi con classe 'freccia-toogle' invece di 'freccia'
+    var freccia_toogle = document.querySelectorAll('.freccia-toogle');
+
+    // Aggiungi un listener di evento a ciascun elemento con classe 'freccia-toogle'
+    freccia_toogle.forEach(freccia => {
         freccia.addEventListener('click', event => {
             // Ottieni l'ID del target dal dataset (data-target)
             const targetId = freccia.dataset.target;
@@ -38,122 +44,172 @@ document.addEventListener('DOMContentLoaded', function() {
             const sotto_menu = document.getElementById(targetId);
             // Alterna tra 'block' e 'none' per la visibilità
             sotto_menu.style.display = sotto_menu.style.display === 'block' ? 'none' : 'block';
-            
-            // Ottieni il genitore dell'elemento freccia
-            // const voce = freccia.parentElement;
-            // Aggiungi o rimuovi la classe 'aperto' dal genitore dell'elemento freccia
-            // voce.classList.toggle('aperto'); // (aperto: true / aperto: false)
-            
-            // Verifica se il sotto-menu è aperto (se è identico a block)
-            // const isOpen = sotto_menu.style.display === 'block';
-            // Salva lo stato di apertura nel localStorage
-            // localStorage.setItem(`${targetId}_aperto`, isOpen.toString());
-            // ES. ---> key: value ---> sotto-menu-1_aperto: true(o false)
-            // [inOpen da come risultato un booleano, quindi va convertito come stringa]
         });
     });
-    
-    // -------------------------------------------------------------------
-    
-    // CAMBIO PAGINA: 
-    
+
+
+    // -------------------------------------------------------------------------------------
+    // ******* GESTIONE DEL CAMBIO DI CONTENUTO ALL'INTERNO DELLA PAGINA *******
+
     // Seleziona tutti gli elementi 'a' all'interno di #menu
-    const menu_a = document.querySelectorAll('#menu a'); // ***
+    const menu_a = document.querySelectorAll('#menu a');
     // Ottieni l'elemento con ID 'contenuto'
     const contenutoDiv = document.getElementById('contenuto');
-    
-    // Aggiungi un listener per il click a ciascun elemento 'a'
-    menu_a.forEach(function(item) {
+
+    // Aggiungi un listener di evento a ciascun elemento 'a'
+    menu_a.forEach(function(item, index) {
         item.addEventListener('click', function(e) {
             // Impedisci il comportamento predefinito del link
             e.preventDefault();
             // Ottieni l'URL dall'attributo 'href'
             const url = this.getAttribute('href');
+            console.log(url);
             // Esegui una richiesta fetch per l'URL
             fetch(url)
             .then(response => response.text())
             .then(data => {
                 // Inserisci il testo ottenuto nell'elemento 'contenuto'
                 contenutoDiv.innerHTML = data;
+                // Aggiorna l'indice della pagina corrente
+                currentPageIndex = index; // Aggiunto
+
+                // *Ho aggiunto "index" come secondo argomento alla funzione che gestisce il click sulle voci di menu. Quando l'utente clicca su una voce di menu, l'indice della pagina corrente (currentPageIndex) viene aggiornato con l'indice della voce di menu cliccata. Questo dovrebbe assicurare che la pagina corrente corrisponda all'elemento del menu selezionato dall'utente.
             });
         });
     });
-    
-    // -------------------------------------------------------------------
 
-// TASTI INDIETRO E AVANTI
 
-// Creo un array di pagine dalla variabile 'menu_a'
-const pages = Array.from(menu_a); // ***
+    // -------------------------------------------------------------------------------------
+    // ******* GESTIONE DEI TASTI INDIETRO E AVANTI *******
 
-// Inizializzo l'indice della pagina corrente
-let currentPageIndex = -1;
+    // Crea un array di pagine dalla variabile 'menu_a'
+    const pages = Array.from(menu_a); // #menu a
+    // Inizializza l'indice della pagina corrente
+    let currentPageIndex = -1;
 
-// Aggiungo un event listener al pulsante 'btnSuccessivo'
-document.getElementById('btnSuccessivo').addEventListener('click', function() {
-    // Verifico se c'è una pagina successiva disponibile (la lunghezza dell'array)
-    if (currentPageIndex < pages.length - 1) {
-        // Incremento l'indice della pagina corrente
-        currentPageIndex++;
-        // Mostro la nuova pagina
-        showPage(pages[currentPageIndex]);
-    }
-});
+    // *menu_a è una NodeList che contiene tutti gli elementi <a> all'interno dell'elemento con ID menu.
+    // *Array.from(), converte la NodeList in un vero e proprio array.
+    // *creo un array chiamato 'pages' che contiene tutti gli elementi del menu come oggetti array. Questo array viene utilizzato successivamente per la navigazione tra le pagine quando si preme il pulsante "Avanti" o "Indietro".
 
-// Aggiungo un event listener al pulsante 'btnPrecedente'
-document.getElementById('btnPrecedente').addEventListener('click', function() {
-    // Verifico se c'è una pagina precedente disponibile
-    if (currentPageIndex > 0) {
-        // Decremento l'indice della pagina corrente
-        currentPageIndex--;
-        // Mostro la nuova pagina
-        showPage(pages[currentPageIndex]);
-    }
-});
 
-// Funzione che mostra una pagina
-function showPage(page) {
-    // Ottengo l'URL dalla pagina
-    const url = page.getAttribute('href');
-    // Effettuo una richiesta per ottenere il testo della pagina
-    fetch(url)
-    .then(response => response.text())
-    .then(data => {
-        // Inserisco il testo nel contenuto del div
-        contenutoDiv.innerHTML = data;
+    // -------------------------------------------------------------------------------------
+    // ******* TASTO AVANTI *******
+
+    // Aggiungi un event listener al pulsante 'btnSuccessivo'
+    document.getElementById('btnSuccessivo').addEventListener('click', function() {
+        // Verifica se c'è una pagina successiva disponibile
+        if (currentPageIndex < pages.length - 1) {
+            // Incrementa l'indice della pagina corrente
+            currentPageIndex++;
+            // Mostra la nuova pagina
+            showPage(pages[currentPageIndex]);
+            // Aggiorna l'elemento attivo nel menu
+            updateActiveMenuItem(currentPageIndex);
+
+            // Gestisci l'apertura dei sottomenu
+            handleSubmenu(currentPageIndex);
+        }
+
+        // Disabilita il tasto "Avanti" se si raggiunge l'ultima pagina
+        if (currentPageIndex === pages.length - 1) {
+            this.disabled = true;
+        }
+
+        // Abilita il tasto "Indietro" se era precedentemente disabilitato
+        document.getElementById('btnPrecedente').disabled = false;
     });
-}
 
-// Dio vede e provvede
-// A buon intenditore buone parole
 
-    
-    
-    
-    
-    // ...
-    
-    
-    
-    
-    
-    // APERTURA - CHIUSURA SOTTO MENU':
-    
-    // Seleziona tutti gli elementi con classe 'voce_principale'
-    // document.querySelectorAll('.voce_principale').forEach(el_voce => {
-    //     // Ottieni l'indice dal dataset (data-index)
-    //     const index = el_voce.dataset.index;
-    //     // Seleziona l'elemento con l'ID basato sull'indice
-    //     const sotto_menu = document.getElementById(`sotto-menu-${index}`);
-    //     // Verifica se il sotto-menu era aperto in precedenza
-    //     const isAperto = localStorage.getItem(`${sotto_menu.id}_aperto`) === 'true';
-    //     // Imposta la visibilità in base allo stato di apertura
-    //     sotto_menu.style.display = isAperto ? 'block' : 'none';
-    //     // Aggiungi la classe 'aperto' se il sotto-menu è aperto
-    //     if (isAperto) {
-    //         el_voce.classList.add('aperto');
-    //     }
-    // });
-    
-    
-})
+    // -------------------------------------------------------------------------------------
+    // ******* TASTO INDIETRO *******
+
+    // Aggiungi un event listener al pulsante 'btnPrecedente'
+    document.getElementById('btnPrecedente').addEventListener('click', function() {
+        // Verifica se c'è una pagina precedente disponibile
+        if (currentPageIndex > 0) {
+            // Decrementa l'indice della pagina corrente
+            currentPageIndex--;
+            // Mostra la nuova pagina
+            showPage(pages[currentPageIndex]);
+            // Aggiorna l'elemento attivo nel menu
+            updateActiveMenuItem(currentPageIndex);
+
+            // Gestisci l'apertura dei sottomenu
+            handleSubmenu(currentPageIndex);
+        }
+
+        // Disabilita il tasto "Indietro" se si raggiunge la prima pagina
+        if (currentPageIndex === 0) {
+            this.disabled = true;
+        }
+
+        // Abilita il tasto "Avanti" se era precedentemente disabilitato
+        document.getElementById('btnSuccessivo').disabled = false;
+    });
+
+
+    // -------------------------------------------------------------------------------------
+    // ******* MOSTRA IL CONTENUTO AL CLICK DEI TASTI 'AVANTI' E 'INDIETRO' *******
+
+    // Mostra la pagina ai click dei tasti 'indietro' e 'avanti'
+    function showPage(page) {
+        // Ottieni l'URL dalla pagina
+        const url = page.getAttribute('href');
+        console.log(url);
+        // Effettua una richiesta per ottenere il testo della pagina
+        fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            // Inserisci il testo nel contenuto del div
+            contenutoDiv.innerHTML = data;
+        });
+    }
+
+
+    // -------------------------------------------------------------------------------------
+    // ******* GESTIONE DELLA CLASSE ACTIVE AL CLICK DEI TASTI 'AVANTI' E 'INDIETRO' *******
+
+    // Aggiorna l'elemento attivo nel menu
+    function updateActiveMenuItem(index) {
+        // Rimuove la classe 'active' da tutti gli elementi del menu
+        menuItems.forEach(function(item) {
+            item.classList.remove('active');
+        });
+        // Aggiunge la classe 'active' all'elemento corrente nel menu
+        menuItems[index].classList.add('active');
+    }
+
+
+    // -------------------------------------------------------------------------------------
+    // ******* GESTIONE DEL SOTTOMENU *******
+
+    function handleSubmenu(index) {
+        // Seleziono tutti i sottomenu
+        var sotto_menu_1 = document.getElementById('sotto-menu-1');
+        var sotto_menu_2 = document.getElementById('sotto-menu-2');
+        var sotto_menu_3 = document.getElementById('sotto-menu-3');
+        var sotto_menu_4 = document.getElementById('sotto-menu-4');
+        var sotto_menu_5 = document.getElementById('sotto-menu-5');
+
+        // Chiudo tutti i sottomenu
+        sotto_menu_1.style.display = 'none';
+        sotto_menu_2.style.display = 'none';
+        sotto_menu_3.style.display = 'none';
+        sotto_menu_4.style.display = 'none';
+        sotto_menu_5.style.display = 'none';
+
+        // Apro il sottomenu relativo alla pagina corrente
+        if (index >= 0 && index < 4) {
+            sotto_menu_1.style.display = 'block';
+        } else if (index >= 4 && index < 9) {
+            sotto_menu_2.style.display = 'block';
+        } else if (index >= 9 && index < 11) {
+            sotto_menu_3.style.display = 'block';
+        } else if (index >= 11 && index < 14) {
+            sotto_menu_4.style.display = 'block';
+        } else if (index >= 14) {
+            sotto_menu_5.style.display = 'block';
+        }
+    }
+
+});

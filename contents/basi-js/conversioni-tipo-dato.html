@@ -1,22 +1,70 @@
 <h1>Conversioni di tipo di dato</h1>
 
-<p>Descrizione: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem, accusantium natus? Porro ab voluptatem hic quam molestiae. Cum id neque architecto molestiae? Harum tempore iste dolores, recusandae voluptates debitis doloribus autem dolorem iusto eaque quisquam quos architecto quae, placeat quas atque saepe sed, et itaque. Deleniti ipsum rerum unde alias.</p>
-
-<p>
-    <b>Esempio:</b>
-</p>
+<h3 class="mt-4">Conversione di stringhe</h3>
+<p>La conversione a String è utile quando abbiamo bisogno del formato stringa di un valore.</p>
+<p>Ad esempio, alert(value) effettua questa conversione per mostrare il valore.</p>
+<p>Possiamo anche utilizzare la funzione String(value), per ottenere lo stesso risultato:</p>
 
 <pre class="bg-dark text-light">
-    <code>
-      // code...
-    </code>
+  <code>
+    let value = true;
+    alert(typeof value); // boolean
+    
+    value = String(value); // ora value è una stringa contenente "true"
+    alert(typeof value); // string
+  </code>
+</pre>
+
+<p>La conversione in stringa è quella più semplice. Il valore false diventa la stringa "false", mentre null diventa "null" etc.</p>
+
+<hr>
+
+<h3 class="mt-4">Conversione numerica</h3>
+<p>La conversione a Number viene applicata automaticamente nelle funzioni ed espressioni matematiche.</p>
+<p>Ad esempio, quando la divisione / viene applicata ad un tipo non numerico:</p>
+
+<pre class="bg-dark text-light">
+  <code>
+    alert( "6" / "2" ); // 3, le stringhe sono state converite a numeri
+  </code>
+</pre>
+
+<p>Possiamo utilizzare la funzione Number(value) per convertire esplicitamente un valore value:</p>
+<pre class="bg-dark text-light">
+  <code>
+    let str = "123";
+    alert(typeof str); // string
+    
+    let num = Number(str); // diventa il numero 123
+    
+    alert(typeof num); // number
+  </code>
 </pre>
 
 <hr>
 
-<!-- Sistemare -->
+<h3 class="mt-4">Boolean conversion</h3>
+<p>La conversione a Boolean è quella più semplice.</p>
+<p>Questa si verifica con le operazioni logiche (più avanti incontreremo i test di condizione ed altri tipi di operazione logiche), ma può anche essere richiamato manualmente con la funzione Boolean(value).</p>
+<p>Le regole di conversione:</p>
+<p>I valori che sono intuitivamente “vuoti”, come lo 0, una stringa vuota, null, undefined e NaN diventano false.</p>
+<p>Gli altri valori diventano true.</p>
+
+<pre class="bg-dark text-light">
+  <code>
+    alert( Boolean(1) ); // true
+    alert( Boolean(0) ); // false
+    
+    alert( Boolean("hello") ); // true
+    alert( Boolean("") ); // false
+  </code>
+</pre>
+
+<hr>
+
 <div class="mt-3">
   <p>
-    Torna alla <a class="escluso" href="http://127.0.0.1:5501/4.sito-javascript-tutorial/index.html">Home</a>.
+      <!-- Torna alla <a class="escluso" onclick="redirect()">Home</a>. -->
+      Torna alla <a class="escluso" href="index.html">Home</a>
   </p>
 </div>

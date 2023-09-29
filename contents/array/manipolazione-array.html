@@ -1,0 +1,93 @@
+<h1>Metodi di manipolazione degli array</h1>
+
+<div>
+    <h4>Push</h4>
+    <p>Usiamo .push quando vogliamo aggiungere qualcosa alla fine di un array. Questo metodo ci consente di aggiungere uno o più elementi alla fine di un array. Il metodo push restituisce la nuova lunghezza dell'array.</p>
+    <p>Aggiunta di un elemento alla fine di un array </p>
+</div>
+
+<pre class="bg-dark text-light">
+    <code>
+        let numbers = [1,2,3,4]
+        numbers.push(5)
+        
+        console.log(numbers) // [1,2,3,4,5]         
+    </code>
+</pre>
+
+<hr>
+
+<div>
+    <h4>Pop</h4>
+    <p>Usiamo .pop quando vogliamo rimuovere qualcosa dalla fine di un array. Il metodo .pop restituisce l'elemento che è stato rimosso . Se l'array è vuoto, restituirà undefinito.</p>
+</div>
+
+<pre class="bg-dark text-light">
+    <code>
+        let fruits = ["🍏", "🍊", "🍌"]
+
+        fruits.pop() // "🍌"
+        console.log(fruits) // ["🍏", "🍊"]
+        
+        fruits.pop() // "🍊"
+        console.log(fruits) // ["🍏"]
+        
+        fruits.pop() // "🍏"
+        console.log(fruits) // []
+        
+        fruits.pop() // undefined
+        console.log(fruits) // []
+    </code>
+</pre>
+
+<hr>
+
+<div>
+    <h4>Unshift</h4>
+    <p>Usiamo .unshift quando vogliamo aggiungere qualcosa all'inizio di un array. Questo metodo ci consente di aggiungere uno o più elementi all'inizio di un array. Il metodo .unshift restituisce la nuova lunghezza dell'array.
+</p>
+</div>
+
+<pre class="bg-dark text-light">
+    <code>
+        let numbers = [2,3,4]
+        numbers.unshift(1)
+        
+        console.log(numbers) // [1,2,3,4]         
+    </code>
+</pre>
+
+<hr>
+
+<div>
+    <h4>Shift</h4>
+    <p>Usiamo .shift quando vogliamo rimuovere qualcosa dall'inizio di un array. Il metodo .shift restituisce l'elemento che è stato rimosso . Se l'array è vuoto, restituirà undefinito. </p>
+</div>
+
+<pre class="bg-dark text-light">
+    <code>
+        let fruits = ["🍏", "🍊", "🍌"]
+
+        fruits.shift() // "🍏"
+        console.log(fruits) // ["🍊", "🍌"]
+        
+        fruits.shift() // "🍊"
+        console.log(fruits) // ["🍌"]
+        
+        fruits.shift() // "🍌"
+        console.log(fruits) // []
+        
+        fruits.shift() // undefined
+        console.log(fruits) // []
+        
+    </code>
+</pre>
+
+<hr>
+
+<div class="mt-3">
+    <p>
+        <!-- Torna alla <a class="escluso" onclick="redirect()">Home</a>. -->
+        Torna alla <a class="escluso" href="index.html">Home</a>
+    </p>
+</div>

@@ -1,6 +1,6 @@
 <h1>Operatore di confronto (> < != ==)</h1>
 
-<p>Descrizione: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem, accusantium natus? Porro ab voluptatem hic quam molestiae. Cum id neque architecto molestiae? Harum tempore iste dolores, recusandae voluptates debitis doloribus autem dolorem iusto eaque quisquam quos architecto quae, placeat quas atque saepe sed, et itaque. Deleniti ipsum rerum unde alias.</p>
+<p>Un operatore di confronto confronta i suoi operandi e restituisce un valore logico a seconda che il confronto sia vero. numerici, stringa, logici o oggetto Gli operandi possono essere valori . Le stringhe vengono confrontate in base all'ordinamento lessicografico standard, utilizzando valori Unicode. Nella maggior parte dei casi, se i due operandi non sono dello stesso tipo, JavaScript tenta di convertirli in un tipo appropriato per il confronto. Questo comportamento generalmente comporta il confronto numerico degli operandi. Le uniche eccezioni alla conversione dei tipi all'interno dei confronti riguardano il file ===E !==operatori, che eseguono confronti rigorosi di uguaglianza e disuguaglianza. Questi operatori non tentano di convertire gli operandi in tipi compatibili prima di verificare l'uguaglianza. La tabella seguente descrive gli operatori di confronto in termini di questo codice di esempio: </p>
 
 <p>
   <b>Esempio:</b>
@@ -8,15 +8,28 @@
 
 <pre class="bg-dark text-light">
   <code>
-    // code...
+    a = 10;
+    b = 15;
+
+    // verifica se 'a' è maggiore di 'b'
+    a > b
+
+    // verifica se 'a' è minore di 'b'
+    a < b
+
+    // verifica se 'a' è uguale a 'b'
+    a == b
+    
+    // verifica se 'a' è diverso da 'b'
+    a != b
   </code>
 </pre>
 
 <hr>
 
-<!-- Sistemare -->
 <div class="mt-3">
   <p>
-    Torna alla <a class="escluso" href="http://127.0.0.1:5501/4.sito-javascript-tutorial/index.html">Home</a>.
+      <!-- Torna alla <a class="escluso" onclick="redirect()">Home</a>. -->
+      Torna alla <a class="escluso" href="index.html">Home</a>
   </p>
 </div>
